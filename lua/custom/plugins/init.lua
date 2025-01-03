@@ -73,12 +73,26 @@ return {
           border = 'rounded',
         },
       }
+
+      local keymaps = {
+        { '<leader>sf', 'files', 'Find Files (fzf-lua)' },
+        { '<leader>sg', 'live_grep', 'Live Grep (fzf-lua)' },
+        { '<leader><leader>', 'buffers', 'Find Buffers (fzf-lua)' },
+        { '<leader>sh', 'help_tags', 'Find Help (fzf-lua)' },
+        { '<leader>sk', 'keymaps', 'Find Keymaps (fzf-lua)' },
+        { '<leader>ss', 'builtin', 'Select FZF Builtins (fzf-lua)' },
+        { '<leader>sw', 'grep_cword', 'Search Word Under Cursor (fzf-lua)' },
+        { '<leader>sd', 'diagnostics', 'Search Diagnostics (fzf-lua)' },
+        { '<leader>sr', 'resume', 'Resume Last Search (fzf-lua)' },
+        { '<leader>s.', 'oldfiles', 'Find Recent Files (fzf-lua)' },
+      }
+
+      for _, map in ipairs(keymaps) do
+        local key, func, desc = unpack(map)
+        vim.keymap.set('n', key, function()
+          require('fzf-lua')[func]()
+        end, { desc = desc })
+      end
     end,
-    keys = {
-      { '<leader>sf', "<cmd>lua require('fzf-lua').files()<CR>", desc = 'Find Files (fzf-lua)' },
-      { '<leader>sg', "<cmd>lua require('fzf-lua').live_grep()<CR>", desc = 'Live Grep (fzf-lua)' },
-      { '<leader>sb', "<cmd>lua require('fzf-lua').buffers()<CR>", desc = 'Find Buffers (fzf-lua)' },
-      { '<leader>sh', "<cmd>lua require('fzf-lua').help_tags()<CR>", desc = 'Find Help (fzf-lua)' },
-    },
   },
 }
