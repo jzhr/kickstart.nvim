@@ -72,6 +72,9 @@ return {
           width = 0.80,
           border = 'rounded',
         },
+        grep = {
+          rg_opts = '--column --line-number --no-heading --color=always --smart-case --max-columns=4096 -e --fixed-strings',
+        },
       }
 
       local keymaps = {
@@ -94,5 +97,8 @@ return {
         end, { desc = desc })
       end
     end,
+  },
+  {
+    'ggml-org/llama.vim',
   },
 }
