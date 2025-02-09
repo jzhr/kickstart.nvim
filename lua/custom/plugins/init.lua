@@ -73,7 +73,7 @@ return {
           border = 'rounded',
         },
         grep = {
-          rg_opts = '--column --line-number --no-heading --color=always --smart-case --max-columns=4096 -e --fixed-strings',
+          rg_opts = '--column --line-number --color=always --smart-case --max-columns=4096 --no-heading -F',
         },
       }
 
